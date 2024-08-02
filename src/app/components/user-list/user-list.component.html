@@ -1,0 +1,28 @@
+<div class="p-4">
+    <h2>Users List</h2>
+    <input type="text" [(ngModel)]="searchText" placeholder="Search by Name" (input)="search()">
+    <input type="text" [(ngModel)]="workoutFilter" placeholder="Filter by Workout Type" (input)="search()">
+    <button (click)="clearFilters()">Clear Filters</button>
+  
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Workouts</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users | paginate: { itemsPerPage: 5, currentPage: page }">
+          <td>{{ user.name }}</td>
+          <td>
+            <div *ngFor="let workout of user.workouts">
+              {{ workout.type }}: {{ workout.minutes }} minutes
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <pagination-controls (pageChange)="paginate($event)"></pagination-controls>
+  </div>
+  
