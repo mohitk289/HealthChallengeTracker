@@ -112,11 +112,11 @@
     <p>Track your health challenges and stay motivated!</p>
     <div class="divider"></div>
     <div class="pill-group">
-      <a href="#" class="pill">Add User</a>
-      <a href="#" class="pill">Log Workout</a>
-      <a href="#" class="pill">View Progress</a>
-      <a href="#" class="pill">Settings</a>
+      <a routerLink="/add-user" class="pill">Add User</a>
+      <a routerLink="/user-list" class="pill">User List</a>
+      <a routerLink="/workout-chart">Workout Chart</a>
+      <a routerLink="/view-progress" class="pill">View Progress</a>
     </div>
-    
+    <router-outlet></router-outlet>
   </div>
 </main>

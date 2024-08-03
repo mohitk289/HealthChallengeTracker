@@ -1,0 +1,35 @@
+<div class="p-4">
+    <h2>View Progress</h2>
+  
+    <div>
+      <input type="text" [(ngModel)]="searchText" (ngModelChange)="onSearch()" placeholder="Search by Username">
+      <input type="text" [(ngModel)]="workoutFilter" (ngModelChange)="onFilterChange($event)" placeholder="Filter by Workout Type">
+    </div>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Workouts</th>
+          <th>Total Minutes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.name }}</td>
+          <td>
+            <div *ngFor="let workout of user.workouts">
+              {{ workout.type }} ({{ workout.minutes }} mins)
+            </div>
+          </td>
+          <td>{{ user.workouts.reduce((sum, workout) => sum + workout.minutes, 0) }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div class="pagination-controls">
+      <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+      <button (click)="nextPage()" [disabled]="currentPage * pageSize >= totalUsers">Next</button>
+    </div>
+  </div>
+  
